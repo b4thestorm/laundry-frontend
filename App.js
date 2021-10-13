@@ -1,21 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppStack } from 'root/routes/tabs';
+import {Provider, useSelector} from 'react-redux'
+import store from 'root/redux/store';
+import LoginScreen from 'root/screens/LoginScreen';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   <Provider store={store}>
+    <NavigationContainer>
+       <AppStack/>
+    </NavigationContainer>
+   </Provider>
+
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
